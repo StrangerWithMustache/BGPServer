@@ -5,7 +5,7 @@ set bgpendpoint [lindex $argv 1];
 
 spawn /bin/bash
 
-expect "]# "
+expect "# "
 send "vtysh\n"
 expect "# "
 send "conf t\n"
