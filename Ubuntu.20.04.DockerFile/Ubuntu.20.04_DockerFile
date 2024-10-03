@@ -1,0 +1,11 @@
+FROM ubuntu:22.04
+
+COPY bgpconfiguration.sh /root/bgpconfiguration.sh
+
+RUN apt-get update && apt-get install -y curl lsb-release gnupg expect && rm -rf /var/lib/apt/lists/* && \
+    curl -s https://deb.frrouting.org/frr/keys.asc | apt-key add - && \
+    echo deb https://deb.frrouting.org/frr $(lsb_release -s -c) frr-stable | tee -a /etc/apt/sources.list.d/frr.list && \
+    apt update && apt install -y frr frr-pythontools && rm -rf /var/lib/apt/lists/* && \
+    sed -i "s/bgpd=no/bgpd=yes/g" /etc/frr/daemons && \
+    cat /etc/frr/daemons | grep -E '(bgpd)' && \
+    chmod 777 /root/bgpconfiguration.sh
