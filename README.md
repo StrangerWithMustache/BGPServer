@@ -9,6 +9,6 @@
 ### Using Ubuntu.20.04:
   * Can be build through DockerFile given in "Ubuntu.20.04.DockerFile" directory.
   * FRR service will not be started when deployed. Need to start manually below command.
-    > '/etc/init.d/frr start'  
+    >/etc/init.d/frr start
   * Can be use already created image: mozegunner/bgpserver:ubuntu.20.04  
   
